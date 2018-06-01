@@ -1,0 +1,5 @@
+runtime: python37
+api_version: 1
+threadsafe: true
+
+# No entrypoint in this app.yaml. Use default entrypoint.

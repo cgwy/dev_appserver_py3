@@ -1,0 +1,7 @@
+Prerequirements:
+1, Follow this quick start: https://cloud.google.com/spanner/docs/quickstart-console
+Create a spanner instance called "test-instance", a db called "example-db". Both
+are used in main.py
+
+2, Run:
+gcloud auth application-default login

@@ -1,0 +1,6 @@
+runtime: python37
+api_version: 1
+threadsafe: true
+
+# This test runs on google3, which requires ipv6
+entrypoint: gunicorn -b [::1]:${PORT} main:app

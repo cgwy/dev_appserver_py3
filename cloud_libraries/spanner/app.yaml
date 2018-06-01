@@ -1,0 +1,10 @@
+runtime: python37
+service: runtimes-python37-spanner-grpc
+instance_class: F2
+
+# override gunicorn startup to tell it we just want one worker
+entrypoint: gunicorn main:app --bind :${PORT} --workers 1 --chdir /srv
+
+# Caveats:
+# original prober app put --bind 0.0.0.0:8080, it would not work.
+# --chdir /srv will be the real local fs.

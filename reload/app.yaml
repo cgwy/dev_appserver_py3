@@ -1,0 +1,7 @@
+runtime: python37
+api_version: 1
+threadsafe: true
+
+# This test app runs on Kokoro,
+# gunicorn will be pip intalled based on requirements.txt.
+entrypoint: gunicorn -b :${PORT} main:app

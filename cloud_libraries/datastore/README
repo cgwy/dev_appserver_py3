@@ -1,0 +1,3 @@
+Prerequirements:
+1, Run:
+gcloud auth application-default login
