@@ -1,4 +1,4 @@
-"""A minimal demo app for python37 using google-cloud-datastore."""
+"""A minimal demo app for python37 using google-cloud-datastore talking to production backend."""
 
 import os
 from flask import Flask
@@ -21,11 +21,17 @@ def _CreateDatastoreClient():
   """Create a datastore client."""
   return datastore.Client()
 
+
+def _CheckEnv():
+  if os.environ.get('DATASTORE_EMULATOR_HOST', ''):
+    exit('Should not have DATASTORE_EMULATOR_HOST when talking to real datastore')
+
+
 @app.route('/list')
 def ListEntities():
   """List entities in datastore."""
+  _CheckEnv()
   client = _CreateDatastoreClient()
-
   query = client.query(kind=ENTITY_KIND)
   entities = list(query.fetch())
   res = []
@@ -37,6 +43,7 @@ def ListEntities():
 @app.route('/put')
 def PutEntity():
   """Put one entity into datastore."""
+  _CheckEnv()
   client = _CreateDatastoreClient()
 
   name = request.args.get('name', DEFAULT_NAME)
