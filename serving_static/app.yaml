@@ -1,0 +1,12 @@
+runtime: python37
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /gae_logo.png
+  static_files: gae_logo.png
+  upload: gae_logo.png
+
+# static_dir should map /d1/somefile to /d2/somefile
+- url: /d1
+  static_dir: d2
